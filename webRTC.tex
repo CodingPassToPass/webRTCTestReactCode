@@ -1,0 +1,67 @@
+WebRTC :- WebRTC is a set of javascript API's that allow us to establish peer to peer connection between two browsers to exchange data such as audio and video in real time.
+ -- Real time Connection
+ -- Lower Latency
+
+-----------------
+
+machine know their private IP address but not public IP address
+
+-----------------
+
+WebSockets and WebRTC difference
+ --WebSockets:- Real Time Communication through server( transports its data through TCP )
+ --WebRTC:- Real Time Communication between browsers, data never touches server( WebRTC transports its data over UDP, UDP is FAST)
+
+ -----------------
+
+So, if WebRTC is so fast, why use websockets at all?
+ --UDP is not a reliable protocol for transferring important data
+ --No build in signaling
+ --UDP does not  validate data
+
+ -----------------
+
+So, what exactly is sent between the two clients and how is it send?
+
+ --SDP's :- A Session Description Protocol(SDP), is an object containing information about the session connection such as the codec, address, media type, audio and video and so on.
+            -- it is a text-based format that describes  the parameters and attributes of a multimedia session. SDP is used to support real-time services like video conferencing, Voip calls, and streaming  music. SDP uses protocols like RTP, RTSP and SIP.
+               ( information of the machine)( give sdp or information to node server to the other machine).   
+
+ --ICE Candidates :- An ICE candidate is a public IP address and port that could potentially be an address that receives data.   ( interactive Connectivity establishment)
+                     -- when starting a WebRTC peer connection, the candidates negotiate with each other until they agree on one. WebRTC then uses that candidate's details to establish the connection.
+                     ( ice server tells us the public IP address to the machine (machine request to ice server for that)).
+                     ( only two people can connect)(peer-to-peer)
+-----------------
+
+STUN Server :-(Session Traversal of User Datagram Protocol through Network Address Translations).[it is a key part real-time Communication]. 
+            :- is a standardized set of methods, including a Network protocol, for Traversal of network address translator(NAT) gateways in application of real time voice, video, messaging, and other interactive communications.
+            :- server is used to facilates peer-to-peer(p2p) and voice over internet protocol(voip) connections.
+            :- it allows clients to discover their public address , the type of NAT they are behind, and the port mapping behaviour of the NAT.
+            
+            ( devices ko private ip address pta rhta hai, par unha public ip address nhi pta hota)
+
+NAT :- ( Network Address Translation):- 
+            :- is a technique used to allow multiple devices on a private network to share a single public IP address when accessing the internet or other external networks.
+            :- when a device on a private network sends a request to access a resource on th internet,  (the NAT router translates the private IP address of the device to the public IP address). when a response from the internet is received, the NAT router translates the public IP address back to the private IP address of the device  that made the request.
+       
+        Why Use NAT:-
+        IP Conservation:- NAT helps conserve IP addresses by allowing multiple devices to share a single public IP address
+        Security:- NAT provides a level of Security
+        Cost Effective:- it reduces the need for multiple public IP addresses, which can be costly
+
+        Limitations:-
+        Scalability:- become complex and difficult to manage as the number of devices on network increases.
+        Performance:- NAT can introduce Latency and affect network performance due to additional processing required to translates IP addresses.
+        limited support for multicast:-  
+
+----------------
+
+---Types of architecture in web WebRTC
+    there are three types of architectures in web WebRTC
+    (i).peer-to-peer Architecture
+    (ii).Mesh Architecture
+    (iii).SFU( Selective Forwarding Unit) Architecture
+    (iv).MCU( Multipoint Control Unit) Architecture
+
+
+
